@@ -33,7 +33,7 @@ export function Projects() {
 
   return (
     <section id="projects" aria-labelledby="projects-title" className="relative py-24 md:py-32">
-      <div aria-hidden className="absolute left-0 top-1/4 -z-10 size-[45vmax] rounded-full bg-signal/[0.05] blur-[140px]" />
+      <div aria-hidden className="absolute left-0 top-1/4 -z-10 size-[45vmax] bg-[radial-gradient(closest-side,rgb(67_226_255/0.07),transparent)]" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           id="projects-title"

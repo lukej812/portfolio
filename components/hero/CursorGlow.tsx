@@ -32,7 +32,7 @@ export function CursorGlow({ container }: { container: RefObject<HTMLElement | n
   return (
     <motion.div
       aria-hidden
-      className="pointer-events-none absolute left-0 top-0 z-0 size-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-70 mix-blend-screen"
+      className="pointer-events-none absolute left-0 top-0 z-0 size-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-70 will-change-transform"
       style={{
         x: sx,
         y: sy,

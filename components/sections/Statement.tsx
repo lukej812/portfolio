@@ -17,7 +17,7 @@ export function Statement({ text }: { text: string }) {
       <motion.div
         aria-hidden
         style={{ opacity: glow }}
-        className="absolute left-1/2 top-1/2 -z-10 h-[60%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgb(67_226_255/0.12),transparent_65%)] blur-2xl"
+        className="absolute left-1/2 top-1/2 -z-10 h-[60%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgb(67_226_255/0.12),transparent_65%)]"
       />
       <div aria-hidden className="absolute inset-x-0 top-1/2 -z-10 h-px bg-linear-to-r from-transparent via-line-strong to-transparent" />
       <p className="mx-auto max-w-6xl px-4 text-center font-display text-h1 font-semibold sm:px-6 lg:px-8">

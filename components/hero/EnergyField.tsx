@@ -7,8 +7,14 @@ import { useEffect, useRef } from "react";
  * The hero background: a twisting ribbon of light lines with bright pulses
  * running along it. Plain 2D canvas, no libraries.
  *
- * Performance guardrails:
- * - fewer lines, coarser steps, and a lower pixel ratio on small screens
+ * Performance guardrails (measured: this loop was the single biggest
+ * main-thread cost on the page):
+ * - renders at a capped pixel ratio; the lines are soft, so retina
+ *   resolution buys nothing visible but costs 2 to 4x the fill
+ * - capped at 30fps (24 on phones), plenty for slow, flowing motion
+ * - fewer lines and coarser steps on small screens
+ * - waits for the browser to go idle before animating, so it never
+ *   competes with hydration or the first paint
  * - pauses when scrolled offscreen or when the tab is hidden
  * - draws a single still frame when reduced motion is preferred
  */
@@ -23,19 +29,22 @@ export function EnergyField({ className }: { className?: string }) {
 
     const small = window.matchMedia("(max-width: 768px)").matches;
     const finePointer = window.matchMedia("(pointer: fine)").matches;
-    const LINES = small ? 18 : 34;
-    const STEP = small ? 16 : 10;
+    const LINES = small ? 12 : 26;
+    const STEP = small ? 22 : 14;
+    const FRAME_MS = 1000 / (small ? 24 : 30);
 
     let width = 0;
     let height = 0;
     let raf = 0;
+    let last = 0;
+    let ready = false;
     let inView = true;
     let gradients: CanvasGradient[] = [];
     const pointer = { x: -1e4, y: -1e4, tx: -1e4, ty: -1e4 };
     const start = performance.now();
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, small ? 1.5 : 2);
+      const dpr = Math.min(window.devicePixelRatio || 1, small ? 1 : 1.25);
       width = canvas.clientWidth;
       height = canvas.clientHeight;
       canvas.width = Math.round(width * dpr);
@@ -99,7 +108,7 @@ export function EnergyField({ className }: { className?: string }) {
       }
 
       // Pulses: short bright trails traveling along a few lines
-      const pulses = small ? 4 : 7;
+      const pulses = small ? 3 : 6;
       for (let k = 0; k < pulses; k++) {
         const line = Math.floor(((k * 5 + 3) % LINES) as number);
         const p = line / (LINES - 1);
@@ -114,7 +123,7 @@ export function EnergyField({ className }: { className?: string }) {
         ctx.strokeStyle = grad;
         ctx.lineWidth = 1.6;
         ctx.beginPath();
-        for (let x = head - tail; x <= head; x += 6) {
+        for (let x = head - tail; x <= head; x += 10) {
           const y = yAt(x, p, t);
           if (x === head - tail) ctx.moveTo(x, y);
           else ctx.lineTo(x, y);
@@ -134,12 +143,14 @@ export function EnergyField({ className }: { className?: string }) {
     };
 
     const loop = (now: number) => {
-      draw(now);
       raf = requestAnimationFrame(loop);
+      if (now - last < FRAME_MS) return;
+      last = now;
+      draw(now);
     };
 
     const play = () => {
-      if (!raf && inView && !document.hidden && !reduce) raf = requestAnimationFrame(loop);
+      if (!raf && ready && inView && !document.hidden && !reduce) raf = requestAnimationFrame(loop);
     };
     const pause = () => {
       cancelAnimationFrame(raf);
@@ -183,9 +194,18 @@ export function EnergyField({ className }: { className?: string }) {
       document.addEventListener("pointerleave", onLeave);
     }
 
-    play();
+    // Start animating once the page has settled
+    const startWhenIdle = () => {
+      ready = true;
+      play();
+    };
+    const idle = window.requestIdleCallback
+      ? window.requestIdleCallback(startWhenIdle, { timeout: 2500 })
+      : window.setTimeout(startWhenIdle, 1200);
 
     return () => {
+      if (window.cancelIdleCallback) window.cancelIdleCallback(idle);
+      else window.clearTimeout(idle);
       pause();
       ro.disconnect();
       io.disconnect();

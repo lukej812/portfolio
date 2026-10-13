@@ -9,7 +9,7 @@ type Props = { value: number; prefix?: string; suffix?: string; duration?: numbe
 
 /**
  * Counts up to `value` when scrolled into view. The final number is in the
- * server HTML and in an aria-label, so it reads correctly without JS.
+ * server HTML and in screen-reader-only text, so it reads correctly without JS.
  */
 export function CountUp({ value, prefix = "", suffix = "", duration = 1.6, className }: Props) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -38,7 +38,8 @@ export function CountUp({ value, prefix = "", suffix = "", duration = 1.6, class
   }, [inView, reduce, value]);
 
   return (
-    <span className={className} aria-label={format(value)}>
+    <span className={className}>
+      <span className="sr-only">{format(value)}</span>
       <span ref={ref} aria-hidden>
         {format(value)}
       </span>

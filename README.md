@@ -32,7 +32,8 @@ All copy lives in `content/`. You should rarely need to touch a component.
 
 | File                     | What's in it                                                                      |
 | ------------------------ | --------------------------------------------------------------------------------- |
-| `content/site.ts`        | Name, links, resume URL, SEO, nav, hero, About, hobbies, statements, testimonials, contact |
+| `content/site.ts`        | Name, links, SEO, nav, hero, About, hobbies, statements, testimonials, contact |
+| `public/Luke_Johnson_Resume.pdf` | The resume behind every Resume button. Replace the file (same name) to update it. |
 | `content/projects.ts`    | Every project card and its detail modal, plus the category filter                 |
 | `content/experience.ts`  | Timeline entries, education, and count-up metrics                                 |
 | `content/skills.ts`      | Skill groups and tags                                                             |
@@ -130,17 +131,34 @@ Violet is deliberately a minor accent to avoid the generic purple-gradient SaaS 
 ### Motion principles
 
 - One easing family: fast out, soft landing (`cubic-bezier(0.16, 1, 0.3, 1)`).
-- Reveals combine fade, a short rise, and a light blur, staggered 50 to 80ms.
+- Reveals combine a fade and a short rise, staggered 50 to 80ms. No blur filters in motion: they repaint every frame.
+- The hero entrance is plain CSS, so it plays on first paint instead of waiting for JavaScript.
 - Scroll drives the big moments: statements light up word by word, the workflow beam and the experience timeline fill as you scroll.
 - Hover is quick and subtle: magnetic buttons, card tilt and spotlight glow, arrows that nudge.
 - **Reduced motion:** Framer Motion runs with `reducedMotion="user"`, CSS animations are disabled, the hero canvas draws a single still frame, and scroll-linked text stays fully visible.
 
 ### Performance guardrails
 
-- The hero background is a single 2D canvas (no WebGL, no libraries). It uses fewer lines and a lower pixel ratio on phones, and pauses when offscreen or when the tab is hidden.
+These came out of profiling (Lighthouse plus frame-time measurements). Keep them when adding features.
+
+- **No `backdrop-filter` on cards.** `.glass` is a translucent surface only. Add `.glass-blur` just where something busy sits behind (the nav, the modal overlay). Blur on ~50 cards was the main cause of scroll jank.
+- **Glows are `radial-gradient` backgrounds, not `blur()` filters.** Same look, nearly free to paint.
+- **Animate only `transform` and `opacity`.** Anything else (`top`, `left`, `filter`) forces layout or repaint every frame.
+- **Hero canvas:** capped pixel ratio, 30fps (24 on phones), fewer lines on phones, starts once the browser is idle, pauses offscreen and in background tabs, and draws one still frame for reduced motion.
+- **Keep infinite animations rare.** Each one keeps the browser producing frames even when nothing else moves.
 - Cursor glow, magnetic pull, and tilt only run for mouse pointers.
-- Project previews are inline SVG; their hover motion is CSS only.
+- The nav tracks the active section with an IntersectionObserver, not scroll-time layout reads.
 - The page is statically generated and revalidated hourly.
+
+Measured on a production build (Lighthouse mobile, simulated slow 4G):
+
+| | Before | After |
+| --- | --- | --- |
+| Performance score | 64 | 90 to 91 |
+| Largest Contentful Paint | 4.3 s | 2.8 to 3.1 s |
+| Total Blocking Time | 810 ms | 190 to 280 ms |
+| Speed Index | 4.1 s | 1.1 to 1.2 s |
+| Desktop scroll (frames over 50 ms) | 14 | 0 |
 
 ---
 

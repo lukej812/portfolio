@@ -27,7 +27,7 @@ export function Workflow() {
   return (
     <section aria-labelledby="workflow-title" className="relative overflow-hidden py-24 md:py-32">
       <div aria-hidden className="grid-backdrop absolute inset-0 -z-10 opacity-50" />
-      <div aria-hidden className="absolute left-1/2 top-1/3 -z-10 h-[50vmax] w-[70vmax] -translate-x-1/2 rounded-full bg-volt/[0.06] blur-[140px]" />
+      <div aria-hidden className="absolute left-1/2 top-1/3 -z-10 h-[50vmax] w-[70vmax] -translate-x-1/2 bg-[radial-gradient(closest-side,rgb(79_125_255/0.08),transparent)]" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading id="workflow-title" label={workflow.label} title={workflow.title} intro={workflow.intro} />
@@ -42,7 +42,9 @@ export function Workflow() {
               className="absolute inset-0 origin-top bg-linear-to-b from-signal via-volt to-flare lg:origin-left lg:bg-linear-to-r"
               style={wide ? { scaleX: reduce ? scrollYProgress : fill } : { scaleY: reduce ? scrollYProgress : fill }}
             />
-            <span className="workflow-spark absolute block rounded-full motion-reduce:hidden" />
+            <span aria-hidden className="workflow-spark-track absolute inset-0 motion-reduce:hidden">
+              <span className="workflow-spark absolute block rounded-full" />
+            </span>
           </div>
 
           {workflow.steps.map((step, i) => (
@@ -64,8 +66,8 @@ export function Workflow() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, y: 24, filter: "blur(6px)" }}
-                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewportOnce}
                 transition={{ duration: 0.9, ease: ease.outExpo, delay: wide ? 0.35 + i * 0.3 : 0.15 }}
               >

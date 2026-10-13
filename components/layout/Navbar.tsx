@@ -11,37 +11,37 @@ import { ease } from "@/lib/motion";
 
 type SectionId = (typeof nav)[number]["id"];
 
-/** Tracks which nav section is under the top third of the viewport */
+/**
+ * Tracks which block of the page crosses a line 35% down the viewport, using
+ * an IntersectionObserver so scrolling never forces a layout read. Every
+ * top-level block in <main> is observed; blocks that aren't in the nav (the
+ * workflow, statements, testimonials) count as the nav section before them.
+ */
 function useActiveSection(): SectionId {
   const [active, setActive] = useState<SectionId>("home");
 
   useEffect(() => {
-    let frame = 0;
-    const update = () => {
-      frame = 0;
-      const line = window.innerHeight * 0.35;
-      let current: SectionId = "home";
-      for (const item of nav) {
-        const el = document.getElementById(item.id);
-        if (el && el.getBoundingClientRect().top <= line) current = item.id;
-      }
-      // At the very bottom, the last section wins even if it's short
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
-        current = nav[nav.length - 1].id;
-      }
-      setActive(current);
-    };
-    const onScroll = () => {
-      if (!frame) frame = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      cancelAnimationFrame(frame);
-    };
+    const main = document.getElementById("main");
+    if (!main) return;
+    const ids = new Set<string>(nav.map((n) => n.id));
+    const owner = new Map<Element, SectionId>();
+    let current: SectionId = "home";
+    for (const el of Array.from(main.children)) {
+      if (ids.has(el.id)) current = el.id as SectionId;
+      owner.set(el, current);
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const id = owner.get(entry.target);
+          if (entry.isIntersecting && id) setActive(id);
+        }
+      },
+      { rootMargin: "-35% 0px -64% 0px" },
+    );
+    owner.forEach((_, el) => observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
   return active;
@@ -101,7 +101,7 @@ export function Navbar() {
           className={cn(
             "flex h-14 items-center justify-between rounded-full pl-3 pr-2 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-500",
             scrolled || open
-              ? "glass bg-ink-900/70 shadow-[0_8px_40px_-12px_rgb(0_0_0/0.8)]"
+              ? "glass glass-blur bg-ink-900/70 shadow-[0_8px_40px_-12px_rgb(0_0_0/0.8)]"
               : "border border-transparent",
           )}
         >
@@ -168,7 +168,7 @@ export function Navbar() {
         {open && (
           <motion.div
             id="mobile-menu"
-            className="fixed inset-0 top-0 -z-10 bg-ink-950/95 backdrop-blur-xl lg:hidden"
+            className="fixed inset-0 top-0 -z-10 bg-ink-950/[0.97] lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

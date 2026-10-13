@@ -17,13 +17,15 @@ export const springs = {
   snappy: { type: "spring", stiffness: 420, damping: 34 } satisfies Transition,
 };
 
-/** Fade, rise, and un-blur: the default section reveal */
+/**
+ * Fade and rise: the default section reveal. Opacity and transform only, so
+ * it stays on the compositor (animating a blur filter repaints every frame).
+ */
 export const reveal: Variants = {
-  hidden: { opacity: 0, y: 28, filter: "blur(8px)" },
+  hidden: { opacity: 0, y: 28 },
   show: (delay: number = 0) => ({
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: { duration: duration.slow, ease: ease.outExpo, delay },
   }),
 };

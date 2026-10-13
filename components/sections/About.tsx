@@ -10,7 +10,7 @@ const hobbyIcons = { Flag, Spade, Shirt, Flame, Sparkles, ChartLine, HandHeart }
 export function About() {
   return (
     <section id="about" aria-labelledby="about-title" className="relative py-24 md:py-32">
-      <div aria-hidden className="absolute right-0 top-40 -z-10 size-[40vmax] rounded-full bg-volt/[0.07] blur-[140px]" />
+      <div aria-hidden className="absolute right-0 top-40 -z-10 size-[40vmax] bg-[radial-gradient(closest-side,rgb(79_125_255/0.09),transparent)]" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">

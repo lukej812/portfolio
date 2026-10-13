@@ -26,10 +26,7 @@ export function SectionHeading({ label, title, intro, align = "left", className,
         viewport={viewportOnce}
         transition={{ duration: 0.6, ease: ease.outExpo }}
       >
-        <span aria-hidden className="relative flex size-1.5">
-          <span className="absolute inset-0 rounded-full bg-signal animate-pulse-soft" />
-          <span className="absolute -inset-1.5 rounded-full bg-signal/20 blur-[3px]" />
-        </span>
+        <span aria-hidden className="size-1.5 rounded-full bg-signal shadow-[0_0_10px_2px_rgb(67_226_255/0.45)]" />
         {label}
       </motion.p>
       <motion.h2

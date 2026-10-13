@@ -19,7 +19,7 @@ export function Testimonials() {
           {items.map((t, i) => (
             <RevealItem key={i} className="h-full">
               <figure className="glass relative flex h-full flex-col overflow-hidden rounded-3xl p-7">
-                <div aria-hidden className="absolute -right-10 -top-10 size-40 rounded-full bg-signal/10 blur-3xl" />
+                <div aria-hidden className="absolute -right-16 -top-16 size-56 bg-[radial-gradient(closest-side,rgb(67_226_255/0.12),transparent)]" />
                 <Quote className="size-7 text-signal/70" aria-hidden />
                 <blockquote className="mt-5 flex-1 font-display text-lg leading-relaxed text-fg">
                   <Text value={t.quote} />
