@@ -67,7 +67,7 @@ export const projects: Project[] = [
     status: "Prototype",
     statusTone: "prototype",
     timeframe: "Runs locally",
-    role: "Solo builder: product, design, and code",
+    role: "Developer",
     problem:
       "Product ideas live in meeting notes, Slack threads, and transcripts. Turning them into a clear spec takes time and often skips the hard questions.",
     summary:
@@ -161,7 +161,7 @@ export const projects: Project[] = [
     status: "Prototype",
     statusTone: "prototype",
     timeframe: "Runs locally, 29-test pytest suite",
-    role: "Solo builder: workflow design and code",
+    role: "Developer",
     problem:
       "When an alert fires, on-call engineers lose critical minutes figuring out what broke, which runbook applies, and who's affected.",
     summary:

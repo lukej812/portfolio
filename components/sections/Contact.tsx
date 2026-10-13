@@ -19,7 +19,7 @@ export function Contact() {
         <div>
           <Reveal>
             <p className="label flex items-center gap-3 text-signal">
-              <span aria-hidden className="size-1.5 rounded-full bg-signal animate-pulse-soft" />
+              <span aria-hidden className="size-1.5 rounded-full bg-signal shadow-[0_0_10px_2px_rgb(67_226_255/0.45)]" />
               {contact.label}
             </p>
           </Reveal>
@@ -42,7 +42,7 @@ export function Contact() {
             <MagneticButton href={site.links.github} variant="secondary" icon={<GitHubIcon className="size-4" />}>
               GitHub
             </MagneticButton>
-            <MagneticButton href={site.links.resume} variant="secondary" icon={<FileText className="size-4" aria-hidden />}>
+            <MagneticButton href={site.links.resume} external variant="secondary" icon={<FileText className="size-4" aria-hidden />}>
               Resume
             </MagneticButton>
           </Reveal>

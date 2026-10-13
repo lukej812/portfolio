@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
-import { Briefcase, GraduationCap, HandHeart, Users } from "lucide-react";
+import { Briefcase, FlaskConical, GraduationCap, HandHeart, Users } from "lucide-react";
 import { useRef } from "react";
 
 import { CountUp } from "@/components/ui/CountUp";
@@ -15,6 +15,7 @@ import { cleanMixed, shouldShow, visible } from "@/lib/placeholder";
 
 const kinds = {
   work: { label: "Work", icon: Briefcase, color: "var(--color-signal)" },
+  externship: { label: "Externship", icon: FlaskConical, color: "#8aa7ff" },
   leadership: { label: "Leadership", icon: Users, color: "var(--color-flare)" },
   community: { label: "Community", icon: HandHeart, color: "var(--color-ion)" },
 } as const;
@@ -50,6 +51,9 @@ export function Experience() {
                   {education.unit}. {education.degree}.
                 </p>
                 <p className="mt-2 text-xs text-ion">{education.dates}</p>
+                <p className="mt-4 text-xs leading-relaxed text-fg-subtle">
+                  <span className="text-fg-muted">Coursework:</span> {education.coursework.join(", ")}
+                </p>
               </div>
             </div>
           </Reveal>
@@ -118,8 +122,8 @@ function TimelineRow({ item, side }: { item: ExperienceItem; side: "left" | "rig
           side === "left" ? "lg:order-1" : "lg:order-2",
         )}
         style={{ ["--accent" as string]: kind.color }}
-        initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
-        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "0px 0px -15% 0px" }}
         transition={{ duration: 0.9, ease: ease.outExpo }}
       >

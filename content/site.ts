@@ -15,13 +15,13 @@ export const site = {
   links: {
     linkedin: "https://www.linkedin.com/in/luke-johnson-a950521b7/",
     github: "https://github.com/lukej812",
-    resume:
-      "https://docs.google.com/document/d/13pYQlRhbrA2X8-_XVBSpwuR8Q3OcIwRfVrxfw6No17s/edit?usp=sharing",
+    /** PDF in /public. Replace the file to update it. */
+    resume: "/Luke_Johnson_Resume.pdf",
   },
   education: {
     school: "University of Washington",
     unit: "Information School",
-    degree: "B.S. Informatics, Data Science concentration",
+    degree: "B.S. Informatics",
     graduated: "June 2026",
   },
   seo: {
@@ -84,7 +84,7 @@ export const about = {
   label: "About",
   title: "Building where AI, product, and people meet.",
   paragraphs: [
-    "I'm Luke. I recently graduated from the University of Washington Information School with a B.S. in Informatics and a concentration in data science. My work sits where AI, product management, data, and business technology overlap.",
+    "I'm Luke. I recently graduated from the University of Washington Information School with a B.S. in Informatics. My work sits where AI, product management, data, and business technology overlap.",
     "Right now I'm a Program Management Intern at Americans4Equality (A4E), a nonprofit that helps people explore AI and technology education so they can grow in their careers or move into new ones. I support program operations, content creation, outreach, and AI education, and I guide intern groups through AI fluency concepts and certifications, including Anthropic's AI Fluency: Framework & Foundations course.",
     "Outside of work, I use Claude Code to prototype products and solve practical problems. Wavelength is a social app for incoming college freshmen. BrokeTogether helps groups split shared costs. I like taking an idea from a rough concept to something people can actually use, then improving it based on what they need.",
   ],

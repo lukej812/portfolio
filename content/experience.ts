@@ -9,7 +9,7 @@ export type ExperienceItem = {
   role: string;
   org: string;
   dates: string;
-  kind: "work" | "leadership" | "community";
+  kind: "work" | "externship" | "leadership" | "community";
   summary?: string;
   bullets: string[];
   metrics?: Metric[];
@@ -18,8 +18,14 @@ export type ExperienceItem = {
 export const education = {
   school: "University of Washington",
   unit: "Information School",
-  degree: "B.S. Informatics, Data Science concentration",
+  degree: "B.S. Informatics",
   dates: "Graduated June 2026",
+  coursework: [
+    "Database & Data Modeling",
+    "Product and Information Systems Management",
+    "Enterprise Risk Management",
+    "Python with Applied Machine Learning",
+  ],
 };
 
 export const experience: ExperienceItem[] = [
@@ -31,9 +37,11 @@ export const experience: ExperienceItem[] = [
     summary:
       "A nonprofit that helps people explore AI and technology education to advance their careers or move into new paths.",
     bullets: [
-      "Support program operations, content creation, outreach, and AI education.",
+      "Rebuilt the nonprofit's website from zero to production as PM and lead developer, using React 19, TypeScript, Vite, and Cloudflare Pages with GitHub Actions CI/CD.",
+      "Designed a centralized TypeScript content system so non-technical staff can update all site copy without touching component code.",
+      "Developed a multi-platform social media strategy across Instagram, TikTok, YouTube, and LinkedIn, and introduced Claude-powered content workflows to speed up production.",
+      "Built a JotForm student intake and screening system to evaluate program eligibility at scale, and managed all workstreams in Monday.com and Office 365.",
       "Created launch content for the A4E AI Portal on LinkedIn, Meta, and X.",
-      "[ADD: accomplishments or metrics]",
     ],
   },
   {
@@ -47,14 +55,34 @@ export const experience: ExperienceItem[] = [
     ],
   },
   {
-    role: "Operational Strategy & People Analytics Extern",
-    org: "Amazon",
-    dates: "Dec 2025 to [ADD: end date]",
-    kind: "work",
+    role: "BeReal Product Management Externship",
+    org: "Extern",
+    dates: "Jun 2026 to Aug 2026",
+    kind: "externship",
+    summary:
+      "Extern runs project-based externships where students work on real problems from partner companies. This one was a product challenge from BeReal.",
+    bullets: [
+      "Identified the highest-priority MAU growth feature out of 6 candidates (\"Buddy Nudge\", RICE score 12.8) by mapping a 5-stage user journey from awareness through retention.",
+      "Analyzed 4 core retention mechanisms and benchmarked BeReal against TikTok, Instagram, and Snapchat on DAU/MAU and feature differentiation.",
+      "Wrote a PM problem statement identifying forced video adoption as the main friction against BeReal's authenticity-first value proposition, validated the feature with structured focus group testing, and delivered a stakeholder pitch with business rationale and an implementation roadmap.",
+    ],
+    metrics: [
+      { value: 6, label: "feature candidates scored with RICE" },
+      { value: 3, label: "competitors benchmarked" },
+    ],
+  },
+  {
+    role: "Amazon Operational Strategy & People Analytics Externship",
+    org: "Extern",
+    dates: "Dec 2025 to Feb 2026",
+    kind: "externship",
+    summary:
+      "A project-based externship through Extern, solving a real operations problem posed by Amazon.",
     bullets: [
       "Analyzed employee reviews with Python and sentiment analysis to surface themes like burnout, miscommunication, and recognition gaps.",
       "Clustered unstructured text into pain point categories mapped to stages of the employee journey.",
-      "Found 10 to 15% bottlenecks in hourly labor allocation and recommended process changes projected to cut downtime by up to 8%.",
+      "Built an analytical framework in Python and SQL that surfaced 10 to 15% bottlenecks in hourly labor allocation, with recommended process changes projected to cut downtime by up to 8%.",
+      "Turned the technical findings into executive-ready recommendations.",
     ],
   },
   {
