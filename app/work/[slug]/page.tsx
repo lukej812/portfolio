@@ -71,7 +71,7 @@ export default async function CaseStudyPage({ params }: Props) {
                     className="inline-flex items-center gap-1.5 rounded-full border border-ion/30 bg-ion/10 px-3 py-1.5 text-xs font-medium text-ion transition-colors hover:border-ion/60"
                   >
                     <BadgeCheck aria-hidden className="size-3.5" />
-                    Completed through {study.via.name}
+                    Verified by {study.via.name}
                     <ArrowUpRight aria-hidden className="size-3.5" />
                     <span className="sr-only"> (opens my {study.via.name} portfolio in a new tab)</span>
                   </a>

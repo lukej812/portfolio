@@ -2,7 +2,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CaseStudyCard } from "@/components/work/CaseStudyCard";
 import { caseStudies } from "@/content/work";
 
-/** Work samples: one card per internship or externship, each linking to its full /work page */
+/** Work samples: one row per internship or externship, each linking to its full /work page */
 export function Work() {
   return (
     <section id="work" aria-labelledby="work-title" className="relative py-24 md:py-32">
@@ -15,9 +15,9 @@ export function Work() {
           intro="Each internship and externship, broken into the steps I took, with the real research, specs, prototypes, and pitches attached. Open one to see everything I made."
         />
 
-        <ul className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-2">
+        <ul className="mt-14 space-y-5">
           {caseStudies.map((study, i) => (
-            <li key={study.slug} className="h-full">
+            <li key={study.slug}>
               <CaseStudyCard study={study} index={i} />
             </li>
           ))}

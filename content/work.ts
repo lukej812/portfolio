@@ -32,15 +32,17 @@ export type Step = {
 export type CaseStudy = {
   slug: string;
   org: string;
+  /** Short org name, used in titles like "BeReal Product Management Externship" */
+  short: string;
   program: string;
   kind: "Externship" | "Internship";
   role: string;
   dates: string;
-  /** Where the work was done through, shown as a badge (for example Extern) */
+  /** Platform that verifies the work, shown as a "Verified by ..." badge linking to it (for example Extern) */
   via?: { name: string; href: string };
   tagline: string;
-  /** Short labels for the steps, shown on the homepage card */
-  stepLabels: string[];
+  /** The few skill tags shown on the homepage row */
+  tags: string[];
   brief: string;
   challenge: string;
   approach: string;
@@ -69,13 +71,14 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "bereal",
     org: "BeReal",
+    short: "BeReal",
     program: "Product Management Externship",
     kind: "Externship",
     role: "Product Management Extern",
     dates: "Jun 2026 to Aug 2026",
     via: { name: "Extern", href: "https://extern.com/portfolios/luke-johnson" },
     tagline: "From company research to a specced, prototyped, and pitched feature: Buddy Nudge.",
-    stepLabels: ["Research", "Journey map", "Problem", "Feature design", "User test plan", "Pitch"],
+    tags: ["Product Management", "UX Research", "Prototyping"],
     brief:
       "An 8-week, project-based externship through Extern, built around a real brief from BeReal: find a way to grow monthly active users without breaking the app's authenticity-first identity.",
     challenge:
@@ -274,12 +277,13 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "americans4equality",
     org: "Americans4Equality (A4E)",
+    short: "A4E",
     program: "Program Management Internship",
     kind: "Internship",
     role: "Program Management Intern",
     dates: "Aug 2026 to present",
     tagline: "Research, strategy, and operations work for a nonprofit closing the AI skills gap.",
-    stepLabels: ["Onboarding review", "AI Portal research", "Strategy", "Program intake"],
+    tags: ["Program Management", "Market Research", "Product Strategy"],
     brief:
       "A4E is a nonprofit that offers free tech and AI education through its Warp programs, with a focus on underserved communities in South King County.",
     challenge:
