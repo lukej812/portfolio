@@ -398,6 +398,95 @@ function renderArt(kind: PreviewKind, a: string, b: string, id: IdFn) {
         </g>
       );
 
+    case "nudge":
+      return (
+        <g>
+          {/* sender phone */}
+          <g className="pv-drift">
+            <rect x="40" y="26" width="78" height="150" rx="14" fill="#0b1017" stroke={a} strokeOpacity=".45" />
+            <rect x="68" y="32" width="22" height="4" rx="2" fill="#a3bee1" fillOpacity=".25" />
+            <circle cx="79" cy="72" r="16" fill={b} fillOpacity=".2" stroke={b} strokeOpacity=".7" />
+            <Bar x={66} y={68} w={26} h={8} o={0.75} fill={b} />
+            <Bar x={56} y={98} w={46} o={0.4} />
+            <Bar x={62} y={108} w={34} o={0.16} />
+            <rect x="52" y="128" width="54" height="20" rx="10" fill={a} fillOpacity=".9" />
+            <Bar x={64} y={136} w={30} o={0.85} fill="#05070b" />
+          </g>
+          {/* the nudge */}
+          <path d="M122 110c28-46 52-46 76-20" fill="none" stroke={`url(#${id("ab")})`} strokeWidth="2" strokeDasharray="3 4" className="pv-flow" />
+          <path d="M193 84l6 7-9 1" stroke={b} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          {/* receiver phone */}
+          <rect x="202" y="26" width="78" height="150" rx="14" fill="#0b1017" stroke={b} strokeOpacity=".45" />
+          <rect x="230" y="32" width="22" height="4" rx="2" fill="#a3bee1" fillOpacity=".25" />
+          <g className="pv-rise">
+            <rect x="210" y="50" width="62" height="40" rx="9" fill={a} fillOpacity=".14" stroke={a} strokeOpacity=".6" />
+            <circle cx="222" cy="62" r="5" fill={b} fillOpacity=".85" />
+            <Bar x={231} y={59} w={34} o={0.7} />
+            <Bar x={218} y={74} w={46} o={0.2} />
+            <rect x="218" y="81" width="46" height="3" rx="1.5" fill="#a3bee1" fillOpacity=".15" />
+            <rect x="218" y="81" width="30" height="3" rx="1.5" fill={a} className="pv-blink" />
+          </g>
+          <rect x="214" y="104" width="54" height="40" rx="8" fill="#a3bee1" fillOpacity=".06" stroke="#a3bee1" strokeOpacity=".15" />
+          <rect x="250" y="108" width="14" height="14" rx="4" fill={b} fillOpacity=".35" />
+          <rect x="214" y="152" width="54" height="14" rx="7" fill={b} fillOpacity=".2" stroke={b} strokeOpacity=".5" />
+          {/* RICE badge */}
+          <g className="pv-pop">
+            <rect x="128" y="146" width="66" height="22" rx="11" fill={a} fillOpacity=".12" stroke={a} strokeOpacity=".55" />
+            <circle cx="140" cy="157" r="3.5" fill={a} />
+            <Bar x={149} y={155} w={36} o={0.6} />
+          </g>
+        </g>
+      );
+
+    case "campaign": {
+      // eight regions, loosely tracing the archipelago from Hokkaido to Kyushu
+      const nodes = [
+        [256, 34],
+        [238, 66],
+        [214, 96],
+        [184, 112],
+        [154, 122],
+        [122, 128],
+        [96, 146],
+        [66, 162],
+      ];
+      return (
+        <g>
+          <path
+            d={`M${nodes.map(([x, y]) => `${x} ${y}`).join("L")}`}
+            fill="none"
+            stroke={`url(#${id("ab")})`}
+            strokeWidth="1.8"
+            strokeDasharray="3 4"
+            className="pv-flow"
+          />
+          {nodes.map(([cx, cy], i) => (
+            <g key={i}>
+              <circle cx={cx} cy={cy} r="11" fill={i % 2 ? b : a} fillOpacity=".12" className="pv-ring" style={{ transitionDelay: `${i * 40}ms` }} />
+              <circle cx={cx} cy={cy} r="5" fill={i % 2 ? b : a} />
+            </g>
+          ))}
+          {/* the can */}
+          <g className="pv-rise">
+            <rect x="34" y="34" width="34" height="62" rx="7" fill="#0b1017" stroke={a} strokeOpacity=".6" />
+            <rect x="34" y="50" width="34" height="18" fill={a} fillOpacity=".22" />
+            <rect x="40" y="56" width="22" height="5" rx="2.5" fill={b} fillOpacity=".85" />
+            <rect x="42" y="28" width="18" height="6" rx="3" fill="#a3bee1" fillOpacity=".3" />
+          </g>
+          {/* live vote */}
+          <Window x={176} y={136} w={124} h={52} stroke={b}>
+            {[0.55, 0.85, 0.35].map((v, i) => (
+              <g key={i}>
+                <rect x={188 + i * 36} y={152} width="24" height="28" rx="3" fill="#a3bee1" fillOpacity=".06" />
+                <rect x={188 + i * 36} y={180 - 28 * v} width="24" height={28 * v} rx="3" fill={i === 1 ? a : b} fillOpacity={i === 1 ? 0.9 : 0.45} className="pv-bar" />
+              </g>
+            ))}
+            <circle cx="290" cy="145" r="3" fill="#ff6b81" className="pv-blink" />
+          </Window>
+        </g>
+      );
+    }
+
     case "broke":
       return (
         <g>

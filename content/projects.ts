@@ -9,7 +9,7 @@
  */
 
 export type Category = "ai" | "product" | "data" | "business" | "campus";
-export type SkillTag = "Product" | "Data" | "AI" | "Business Tech" | "Development";
+export type SkillTag = "Product" | "Data" | "AI" | "Business Tech" | "Development" | "Marketing";
 export type StatusTone = "live" | "progress" | "prototype" | "complete";
 export type PreviewKind =
   | "spec"
@@ -23,7 +23,9 @@ export type PreviewKind =
   | "portal"
   | "aqua"
   | "wavelength"
-  | "broke";
+  | "broke"
+  | "nudge"
+  | "campaign";
 
 export type Project = {
   slug: string;
@@ -153,6 +155,35 @@ export const projects: Project[] = [
     preview: "broke",
   },
   {
+    slug: "buddy-nudge",
+    title: "Buddy Nudge",
+    tagline: "A BeReal feature, from RICE score to clickable prototype",
+    categories: ["product"],
+    tags: ["Product"],
+    status: "Externship project",
+    statusTone: "complete",
+    timeframe: "Summer 2026, BeReal externship through Extern",
+    role: "Product Management Extern",
+    problem:
+      "BeReal users often miss the two-minute posting window because they miss the notification or don't feel like opening the app alone. A generic reminder adds exactly the kind of pressure BeReal was built to remove.",
+    summary:
+      "Pair with one friend who can send a single, private, one-tap nudge if you haven't posted yet. I picked it from six ideas with RICE scoring, wrote the PRD, mapped every screen and state, made the prototype screens, planned a focus group, and pitched it.",
+    features: [
+      "Ranked first of 6 MAU growth ideas with a RICE score of 12.8",
+      "PRD-lite with MAU success metrics, user stories, acceptance criteria, and clear non-goals (no chat, no leaderboards)",
+      "Flow map covering 5 screens and every empty, loading, success, and error state",
+      "High-fidelity prototype screens for the full nudge flow",
+      "Focus group plan and discussion guide for a 7-person test, plus a 7-slide stakeholder pitch",
+    ],
+    tech: ["RICE prioritization", "PRD writing", "Flow mapping", "Canva prototype", "Focus group design"],
+    whyItMatters:
+      "It's the whole PM loop on a real consumer app: research, a problem worth solving, a prioritized bet, and a spec someone could build from.",
+    links: [{ label: "See every document", href: "/work/bereal" }],
+    accent: "#43e2ff",
+    accent2: "#8f7dff",
+    preview: "nudge",
+  },
+  {
     slug: "outage-response",
     title: "Autonomous Outage Response System",
     tagline: "Triages production outages before the on-call engineer opens their laptop",
@@ -216,6 +247,41 @@ export const projects: Project[] = [
     accent: "#4f7dff",
     accent2: "#43e2ff",
     preview: "registration",
+  },
+  {
+    slug: "tobidase",
+    title: "Tobidase: Red Bull Japan Campaign Plan",
+    tagline: "A 360° campaign that turns spectators into participants",
+    categories: ["business"],
+    tags: ["Marketing", "Data"],
+    status: "Campaign plan",
+    statusTone: "complete",
+    timeframe: "Jul 2026",
+    role: "Strategist and author",
+    problem:
+      "Red Bull Japan is admired but not inhabited. Most 18 to 24 year olds know the brand and have decided it's for other people: individual exceptionalism reads differently in a collectivist culture, the brand's activity is Tokyo-centric, and Suntory's ZONe was built for exactly this audience.",
+    summary:
+      "A full 360° brand campaign for Red Bull Japan's 18 to 24 entry-point consumer, written as a business case that arrives at a campaign. Eight crews of three, one from each region of Japan, face the same challenge on the same day in their home regions, and the whole country votes on which challenge they get.",
+    features: [
+      "Market analysis: a roughly USD 3.58B energy drink market, the competitive set, and Japan's platform landscape",
+      "Segmentation that targets aware non-users, about 55% of the cohort, with a persona and a single consumer insight",
+      "8 SMART objectives, from +10pp regional awareness to 10,000 Season 2 applications in the first week",
+      "Paid, earned, shared, and owned plan built on amplifying real creators instead of brand ads",
+      "¥300M budget with the basis for every line, and a measurement framework with worked derivations",
+      "Risk register and Q&A prep for a 15-minute, 16-slide presentation",
+    ],
+    tech: ["Market sizing", "Segmentation", "PESO planning", "Budgeting", "KPI design"],
+    whyItMatters:
+      "It shows I can start from market data and cultural insight, land on one simple idea, and back every number with a stated assumption.",
+    links: [
+      {
+        label: "Read the plan",
+        href: "https://docs.google.com/document/d/10jZZ7NYPuDtgMBpeH61uqJnuXJQn8bZnYRx-Wd2F_bU/edit?usp=sharing",
+      },
+    ],
+    accent: "#ff6b81",
+    accent2: "#ffb547",
+    preview: "campaign",
   },
   {
     slug: "prompt-injection",
@@ -312,12 +378,22 @@ export const projects: Project[] = [
     role: "[ADD: your role]",
     summary:
       "Atelier recommends outfits from clothes you already own. It recognizes garments with Claude's vision API and includes an AI stylist feature.",
-    features: ["AI garment recognition with Claude's vision API", "AI stylist that builds outfits from your own closet"],
-    tech: ["React", "Claude vision API"],
+    features: [
+      "Recognize: Claude's vision API identifies a garment's category, color, and style from a photo or a tag",
+      "Reason: name the occasion and it composes outfits from your own closet, with written styling notes",
+      "Render: virtual try-on (IDM-VTON) composites the chosen pieces onto your photo before you open the closet",
+      "Values built in: it recommends what you own instead of what to buy, never reshapes your body, and keeps data local-first",
+    ],
+    tech: ["React", "Claude vision API", "IDM-VTON"],
     ai: "Claude's vision API identifies garments from photos to fill in the wardrobe.",
     whyItMatters:
       "It encourages wearing what you have instead of buying more, and it ties into my interest in fashion.",
-    links: [{ label: "View project", href: "[ADD: link if available]" }],
+    links: [
+      {
+        label: "View the deck",
+        href: "https://docs.google.com/presentation/d/1rDObgpWo-AbkSW_SMyL7e036OkrxkxLxNx2FBwo-FCo/edit?usp=sharing",
+      },
+    ],
     accent: "#ffb547",
     accent2: "#8f7dff",
     preview: "atelier",
@@ -330,13 +406,21 @@ export const projects: Project[] = [
     tags: ["Business Tech", "AI", "Product"],
     status: "[ADD: status]",
     statusTone: "progress",
-    role: "[ADD: what I built or contributed]. I also created the launch social posts for LinkedIn, Meta, and X.",
+    role: "I wrote the market research and competitive analysis behind the portal and built the pitch deck for leadership. I also created the launch social posts for LinkedIn, Meta, and X.",
+    problem:
+      "People in South King County who are new to technology have no clear, trusted, free starting point for learning AI skills that lead to real jobs. Plenty of free AI content exists. Very little of it is built for beginners.",
     summary:
       "Americans4Equality's AI education portal. All A4E WARP courses are free, and about 90% of the courses in the external resource hub are free too.",
+    features: [
+      "Research case: AI is the second most-requested skill in U.S. job postings, with a salary premium of about $18K",
+      "Five learner personas with jobs to be done, and 12 competitor and peer programs profiled",
+      "Designed around a 3-question self-assessment that routes each visitor to one of six learning pathways",
+      "MoSCoW scope, a content-first 8-week build plan, and a north-star metric: pathway completions with a documented next step",
+    ],
     tech: ["[ADD: tools or stack]"],
     whyItMatters: "It makes AI education accessible to people who are trying to change careers.",
-    note: "The repo is private, so there's no public link.",
-    links: [],
+    note: "The repo is private, so there's no public link. The research and pitch are summarized on the A4E work page.",
+    links: [{ label: "See the research and pitch", href: "/work/americans4equality" }],
     accent: "#4f7dff",
     accent2: "#ffb547",
     preview: "portal",
