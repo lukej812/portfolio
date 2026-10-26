@@ -35,6 +35,7 @@ All copy lives in `content/`. You should rarely need to touch a component.
 | `content/site.ts`        | Name, links, SEO, nav, hero, About, hobbies, statements, testimonials, contact |
 | `public/Luke_Johnson_Resume.pdf` | The resume behind every Resume button. Replace the file (same name) to update it. |
 | `content/projects.ts`    | Every project card and its detail modal, plus the category filter                 |
+| `content/work.ts`        | Work samples: each internship or externship, its steps, and the linked documents  |
 | `content/experience.ts`  | Timeline entries, education, and count-up metrics                                 |
 | `content/skills.ts`      | Skill groups and tags                                                             |
 | `content/workflow.ts`    | The "From idea to product, with AI" steps and their examples                      |
@@ -59,7 +60,19 @@ grep -rn "\[ADD:" content
 
 ### Adding a project
 
-Add an object to the `projects` array in `content/projects.ts`. The fields are typed, so your editor will tell you what's required. Pick a `preview` style from the existing ones (`spec`, `outage`, `resume`, `atelier`, `registration`, `injection`, `fifa`, `health`, `portal`, `aqua`, `wavelength`, `broke`) or add a new case in `components/projects/ProjectPreview.tsx`. Set `accent` and `accent2` to give the card its own colors.
+Add an object to the `projects` array in `content/projects.ts`. The fields are typed, so your editor will tell you what's required. Pick a `preview` style from the existing ones (`spec`, `outage`, `resume`, `atelier`, `registration`, `injection`, `fifa`, `health`, `portal`, `aqua`, `wavelength`, `broke`, `nudge`, `campaign`) or add a new case in `components/projects/ProjectPreview.tsx`. Set `accent` and `accent2` to give the card its own colors.
+
+A link whose `href` starts with `/` (like `/work/bereal`) opens in place; anything else opens in a new tab.
+
+### Work samples
+
+`content/work.ts` powers the "Work samples" section and one page per entry at `/work/[slug]`, modeled on Extern's portfolio: the role and dates up top, highlights, an overview, then the work grouped into steps with every document linked.
+
+- Add a case study by adding an object to `caseStudies`. Its page, sitemap entry, and homepage card are generated from it.
+- Each deliverable's `href` is its Google Drive share link. **Share the file as "Anyone with the link can view"**, or visitors land on a request-access page.
+- Leave `href` out for documents that can't be public (internal org work). The card then reads "Available on request" and points to the contact form.
+- Set `illustrative: true` on documents built on example data rather than real research results. They get a visible "Illustrative" tag.
+- Set `caseStudy: "<slug>"` on an entry in `content/experience.ts` to add a "See the work" link to its timeline card.
 
 ### GitHub section
 
@@ -166,11 +179,13 @@ Measured on a production build (Lighthouse mobile, simulated slow 4G):
 
 ```
 app/            layout, page, global styles, OG image, icons, robots, sitemap
+  work/[slug]/  one statically generated page per case study
 components/
   hero/         Hero, EnergyField (canvas), CursorGlow
   layout/       Navbar, Footer, MotionProvider
   projects/     ProjectCard, ProjectModal, ProjectPreview, StatusPill
-  sections/     About, Skills, Workflow, Projects, Experience, GitHub, Testimonials, Contact
+  sections/     About, Skills, Workflow, Projects, Work, Experience, GitHub, Testimonials, Contact
+  work/         CaseStudyCard, DeliverableCard, DocStack
   ui/           Reveal, SectionHeading, MagneticButton, CountUp, Placeholder, Icons
 content/        everything you edit
 lib/            GitHub fetcher, placeholder helpers, motion tokens, hooks
