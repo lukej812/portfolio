@@ -60,7 +60,7 @@ grep -rn "\[ADD:" content
 
 ### Adding a project
 
-Add an object to the `projects` array in `content/projects.ts`. The fields are typed, so your editor will tell you what's required. Pick a `preview` style from the existing ones (`spec`, `outage`, `resume`, `atelier`, `registration`, `injection`, `fifa`, `health`, `portal`, `aqua`, `wavelength`, `broke`, `nudge`, `campaign`) or add a new case in `components/projects/ProjectPreview.tsx`. Set `accent` and `accent2` to give the card its own colors.
+Add an object to the `projects` array in `content/projects.ts`. The fields are typed, so your editor will tell you what's required. Pick a `preview` style from the existing ones (`spec`, `outage`, `resume`, `atelier`, `registration`, `injection`, `fifa`, `health`, `portal`, `aqua`, `wavelength`, `broke`, `nudge`) or add a new case in `components/projects/ProjectPreview.tsx`. Set `accent` and `accent2` to give the card its own colors.
 
 A link whose `href` starts with `/` (like `/work/bereal`) opens in place; anything else opens in a new tab.
 

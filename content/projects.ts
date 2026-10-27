@@ -9,7 +9,7 @@
  */
 
 export type Category = "ai" | "product" | "data" | "business" | "campus";
-export type SkillTag = "Product" | "Data" | "AI" | "Business Tech" | "Development" | "Marketing";
+export type SkillTag = "Product" | "Data" | "AI" | "Business Tech" | "Development";
 export type StatusTone = "live" | "progress" | "prototype" | "complete";
 export type PreviewKind =
   | "spec"
@@ -24,8 +24,7 @@ export type PreviewKind =
   | "aqua"
   | "wavelength"
   | "broke"
-  | "nudge"
-  | "campaign";
+  | "nudge";
 
 export type Project = {
   slug: string;
@@ -249,41 +248,6 @@ export const projects: Project[] = [
     preview: "registration",
   },
   {
-    slug: "tobidase",
-    title: "Tobidase: Red Bull Japan Campaign Plan",
-    tagline: "A 360° campaign that turns spectators into participants",
-    categories: ["business"],
-    tags: ["Marketing", "Data"],
-    status: "Campaign plan",
-    statusTone: "complete",
-    timeframe: "Jul 2026",
-    role: "Strategist and author",
-    problem:
-      "Red Bull Japan is admired but not inhabited. Most 18 to 24 year olds know the brand and have decided it's for other people: individual exceptionalism reads differently in a collectivist culture, the brand's activity is Tokyo-centric, and Suntory's ZONe was built for exactly this audience.",
-    summary:
-      "A full 360° brand campaign for Red Bull Japan's 18 to 24 entry-point consumer, written as a business case that arrives at a campaign. Eight crews of three, one from each region of Japan, face the same challenge on the same day in their home regions, and the whole country votes on which challenge they get.",
-    features: [
-      "Market analysis: a roughly USD 3.58B energy drink market, the competitive set, and Japan's platform landscape",
-      "Segmentation that targets aware non-users, about 55% of the cohort, with a persona and a single consumer insight",
-      "8 SMART objectives, from +10pp regional awareness to 10,000 Season 2 applications in the first week",
-      "Paid, earned, shared, and owned plan built on amplifying real creators instead of brand ads",
-      "¥300M budget with the basis for every line, and a measurement framework with worked derivations",
-      "Risk register and Q&A prep for a 15-minute, 16-slide presentation",
-    ],
-    tech: ["Market sizing", "Segmentation", "PESO planning", "Budgeting", "KPI design"],
-    whyItMatters:
-      "It shows I can start from market data and cultural insight, land on one simple idea, and back every number with a stated assumption.",
-    links: [
-      {
-        label: "Read the plan",
-        href: "https://docs.google.com/document/d/10jZZ7NYPuDtgMBpeH61uqJnuXJQn8bZnYRx-Wd2F_bU/edit?usp=sharing",
-      },
-    ],
-    accent: "#ff6b81",
-    accent2: "#ffb547",
-    preview: "campaign",
-  },
-  {
     slug: "prompt-injection",
     title: "Prompt Injection in Conversational AI",
     tagline: "How attackers hijack enterprise AI assistants, and how to defend them",
@@ -350,18 +314,32 @@ export const projects: Project[] = [
   {
     slug: "ai-resume-tracker",
     title: "AI Resume Tracker",
-    tagline: "Instant AI feedback on your resume",
+    tagline: "See how well your resume fits a specific job",
     categories: ["ai"],
     tags: ["AI", "Development"],
     status: "Live",
     statusTone: "live",
-    role: "[ADD: your role]",
+    timeframe: "Dec 2025, team of 3",
+    role: "Co-builder, with 2 classmates",
+    problem:
+      "Job descriptions are dense and full of hidden expectations, tailoring a resume to every posting takes hours, and recruiter feedback is usually too vague to act on.",
     summary:
-      "Upload a resume and get feedback on its quality and clarity, with specific, actionable suggestions to strengthen it.",
+      "Paste in a job description and upload your resume. It compares the skills, keywords, and responsibilities in both, then returns a 0 to 100 compatibility score with short, specific tips. We built it as a mutual aid tool students can share with each other.",
+    features: [
+      "Compares skills, keywords, and responsibilities between a resume and a specific job posting",
+      "Returns a 0 to 100 compatibility score with short written tips",
+      "Next on the roadmap: a live score that updates as you edit, a keyword heatmap, and a what-if mode that previews how adding a skill changes the score",
+    ],
     tech: ["React", "JavaScript", "HTML/CSS", "LLM integration"],
-    ai: "An LLM reviews the resume and returns targeted suggestions instead of generic advice.",
-    whyItMatters: "Built for students and job seekers trying to stand out.",
-    links: [{ label: "Try it live", href: "https://puter.com/app/rkn-ai-resume-tracker" }],
+    ai: "An LLM compares the resume against the posting and returns a score with targeted tips instead of generic advice.",
+    whyItMatters: "Built for students and job seekers trying to stand out, and easy to share so friends can help each other.",
+    links: [
+      { label: "Try it live", href: "https://puter.com/app/rkn-ai-resume-tracker" },
+      {
+        label: "View the deck",
+        href: "https://docs.google.com/presentation/d/1mDDbo3J2NXRruQrdjnwq50TkzmkbTxKbFgu5gG56R1I/edit?usp=sharing",
+      },
+    ],
     accent: "#2fd9a9",
     accent2: "#43e2ff",
     preview: "resume",

@@ -281,7 +281,7 @@ export const caseStudies: CaseStudy[] = [
     program: "Program Management Internship",
     kind: "Internship",
     role: "Program Management Intern",
-    dates: "Aug 2026 to present",
+    dates: "Aug 2026 to Nov 2026",
     tagline: "Research, strategy, and operations work for a nonprofit closing the AI skills gap.",
     tags: ["Program Management", "Market Research", "Product Strategy"],
     brief:

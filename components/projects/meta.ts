@@ -6,7 +6,6 @@ export const tagColors: Record<SkillTag, string> = {
   AI: "#8aa7ff",
   "Business Tech": "var(--color-flare)",
   Development: "var(--color-pulse)",
-  Marketing: "var(--color-alert)",
 };
 
 export const toneStyles: Record<StatusTone, { dot: string; text: string; border: string; pulse: boolean }> = {

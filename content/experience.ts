@@ -32,12 +32,22 @@ export const education = {
 
 export const experience: ExperienceItem[] = [
   {
+    role: "AI Product Manager Intern",
+    org: "Sparrow",
+    dates: "Starting Nov 2026",
+    kind: "work",
+    bullets: [
+      "Joining the team as an AI Product Manager Intern in November 2026.",
+      "[ADD: what you're working on once you start]",
+    ],
+  },
+  {
     role: "Program Management Intern",
     org: "Americans4Equality (A4E)",
-    dates: "Aug 2026 to present",
+    dates: "Aug 2026 to Nov 2026",
     kind: "work",
     summary:
-      "A nonprofit that helps people explore AI and technology education to advance their careers or move into new paths.",
+      "A nonprofit that helps people explore AI and technology education to advance their careers or move into new paths. The internship wraps up November 1, 2026, and I'm staying on as a volunteer.",
     bullets: [
       "Rebuilt the nonprofit's website from zero to production as PM and lead developer, using React 19, TypeScript, Vite, and Cloudflare Pages with GitHub Actions CI/CD.",
       "Designed a centralized TypeScript content system so non-technical staff can update all site copy without touching component code.",
