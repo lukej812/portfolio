@@ -91,7 +91,7 @@ export const caseStudies: CaseStudy[] = [
       { value: "6", label: "feature ideas scored with RICE" },
       { value: "12.8", label: "RICE score for Buddy Nudge, the top pick" },
       { value: "5", label: "journey stages mapped, awareness to retention" },
-      { value: "7", label: "slide stakeholder pitch, problem to next step" },
+      { value: "8", label: "high-fidelity prototype screens" },
     ],
     skills: [
       "Company and competitive research",
@@ -105,35 +105,20 @@ export const caseStudies: CaseStudy[] = [
       "Stakeholder pitching",
     ],
     tools: ["Google Docs", "Google Sheets", "Canva"],
-    note: "Documents marked Illustrative use example data written for the coursework to show how results would be captured and synthesized. They are not results from a live study.",
     accent: "#43e2ff",
     accent2: "#8f7dff",
     steps: [
       {
-        title: "Research the company and the market",
+        title: "Research the market",
         summary:
-          "Built a picture of where BeReal came from, how it makes money now, and who it competes with, then compared what delights and frustrates users on BeReal and Instagram.",
+          "Compared what delights and frustrates users on BeReal and Instagram, found the standout difference between them, and proposed a product tweak for each.",
         deliverables: [
-          {
-            title: "Company Research: Visual Summary",
-            kind: "doc",
-            description:
-              "Founding story, funding (about $90M raised before a roughly $537M exit to Voodoo), business model, competitive landscape against Instagram, TikTok, Snapchat, and Lemon8, and 2025 to 2026 key metrics.",
-            href: gdoc("1zgxbEZofnbmOhvK0NOlcKwagBlsrTmLI05GSqnjWsL4"),
-          },
           {
             title: "Instagram vs. BeReal: Frustration and Delight",
             kind: "doc",
             description:
               "One delight and one frustration for each app, the standout difference between them, and a symmetric product tweak for each.",
             href: gdoc("1JOBHF-wBUKBQLau2n9NbFl2B_MrASKjPRt3e7Iz1AtA"),
-          },
-          {
-            title: "Retention and Engagement Feature Analysis",
-            kind: "doc",
-            description:
-              "The four BeReal features that drive daily retention and the behavior each one creates, with my manual review cross-checked against AI-assisted research.",
-            href: gdoc("1_Z6tTBrBTbnlnjpO08ULxrTZe6lmDBcuGk6Z2HEZU28"),
           },
         ],
       },
@@ -152,23 +137,9 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        title: "Frame the problem",
-        summary:
-          "Turned the friction I kept seeing into a problem statement backed by evidence, with a measurable opportunity attached.",
-        deliverables: [
-          {
-            title: "PM Problem Statement and Opportunity Note",
-            kind: "doc",
-            description:
-              "Why forcing a new capture format (video) into the two-minute window works against BeReal's core ritual, three pieces of evidence, and an opt-in alternative tied to MAU stability.",
-            href: gdoc("1QaDHTAp1hX3AboHIszZcxIJOI6uyN9ZFkmvYVyUKG6c"),
-          },
-        ],
-      },
-      {
         title: "Design a new feature",
         summary:
-          "Generated six ideas aimed at MAU growth, scored them with RICE, and took the winner from a one-page spec to clickable screens.",
+          "Generated six ideas aimed at MAU growth, scored them with RICE, and took the winner from a one-page spec to high-fidelity screens.",
         deliverables: [
           {
             title: "Feature Brainstorm and RICE Scoring",
@@ -185,13 +156,6 @@ export const caseStudies: CaseStudy[] = [
             href: gdoc("1ovusY_bivTUdkcY5to73C3MdKtbn2MBkbKd8iryS28s"),
           },
           {
-            title: "Flow Map and Storyboard",
-            kind: "doc",
-            description:
-              "Five screens, every state (empty, loading, success, error, returning user) with its microcopy, and the transitions between them.",
-            href: gdoc("10BWZVq5DeIdvvQ4J54nMFC_lWcyfIR4K5YReNclolGU"),
-          },
-          {
             title: "Prototype Screens",
             kind: "pdf",
             description:
@@ -202,8 +166,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Plan a user test",
-        summary:
-          "Designed a focus group to check whether the feature feels authentic and low-pressure, and worked through how the notes and survey would roll up into a recommendation.",
+        summary: "Designed a focus group to check whether the feature feels authentic and low-pressure to BeReal users.",
         deliverables: [
           {
             title: "Focus Group Plan",
@@ -211,64 +174,6 @@ export const caseStudies: CaseStudy[] = [
             description:
               "Goal, a seven-person participant mix (frequent, occasional, and non-users), session flow, tools, and the pitfalls to avoid.",
             href: gdoc("15WmZ1Y7Wq6mo9oPyEjlRqiLSULxzuT83rUzFkcyP0Yw"),
-          },
-          {
-            title: "Discussion Guide",
-            kind: "doc",
-            description:
-              "A 35 to 40 minute script covering warm-up, first impressions, usability, value, and wrap-up, with non-leading follow-up questions.",
-            href: gdoc("1f_E0RK8453zpPk8LQ84K-zPJOxyIz8o-BRTNcQv88_g"),
-          },
-          {
-            title: "Session Notes",
-            kind: "doc",
-            description:
-              "A notes log of timestamped quotes, observations, and themes, plus a debrief, showing how a live session would be captured.",
-            href: gdoc("1GjY--qftOo0RD3qackhe8Xt_6rANNDeMbcGE5VIPG2g"),
-            illustrative: true,
-          },
-          {
-            title: "Survey Results Summary",
-            kind: "doc",
-            description:
-              "A seven-question post-session survey readout (ease, authenticity, intent, and would-you-recommend), showing how scores would be summarized.",
-            href: gdoc("1BhD7LVGYicLl5e0lbktJj1KPMddVchis-xbXsI_Mo3I"),
-            illustrative: true,
-          },
-          {
-            title: "Test Summary Report",
-            kind: "doc",
-            description:
-              "Methodology, three findings with supporting quotes, and a Refine recommendation: keep the core idea, and fix the unclear confirmation states before a larger test.",
-            href: gdoc("1Uy7RSXIf0fqRpfbv_fgB2KIC3ky4qchRzsnwN0RoBM0"),
-            illustrative: true,
-          },
-        ],
-      },
-      {
-        title: "Pitch the recommendation",
-        summary:
-          "Packaged the work into a seven-slide stakeholder pitch: the problem, what users said, the solution, how it works, the evidence, the impact, and the next step.",
-        deliverables: [
-          {
-            title: "Pitch Outline",
-            kind: "doc",
-            description: "Seven slides from problem to recommendation, with the talking points and the visual planned for each.",
-            href: gdoc("1vcim_SkO8V8jwDbjlDuDduK7a5warKQMMCioM7z2w7o"),
-          },
-          {
-            title: "Evidence Pack",
-            kind: "doc",
-            description:
-              "Every claim in the pitch paired with its proof (a quote, a pattern, a visual, data, or a metric) and a one-line proof statement.",
-            href: gdoc("1nSRy2yXWgO2qJSktqjWfZx3twJxYpMhznzwm90oOHFQ"),
-          },
-          {
-            title: "Speaker Notes and Script",
-            kind: "doc",
-            description: "The full talk track for the pitch, slide by slide, with pauses and transitions marked.",
-            href: gdoc("14yB5NOZqi5U6nCTHfsSkHziegEBLZcgTcEq662XR4Dg"),
-            illustrative: true,
           },
         ],
       },
@@ -314,16 +219,10 @@ export const caseStudies: CaseStudy[] = [
     accent2: "#ffb547",
     steps: [
       {
-        title: "Review onboarding and tooling",
+        title: "Evaluate tools and channels",
         summary:
-          "Gave honest feedback on the onboarding program, evaluated the platform the intern team would run on, and audited A4E's social presence against nonprofit benchmarks.",
+          "Evaluated the platform the intern team would run on, and audited A4E's social presence against nonprofit benchmarks.",
         deliverables: [
-          {
-            title: "Onboarding Reflection",
-            kind: "slides",
-            description:
-              "What the onboarding modules taught, what worked and what didn't, and six changes to make training stick, like cohort debriefs and mentor sign-off.",
-          },
           {
             title: "Platform Comparison: Asana vs. Monday.com vs. ClickUp",
             kind: "doc",

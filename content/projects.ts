@@ -177,7 +177,7 @@ export const projects: Project[] = [
     tech: ["RICE prioritization", "PRD writing", "Flow mapping", "Canva prototype", "Focus group design"],
     whyItMatters:
       "It's the whole PM loop on a real consumer app: research, a problem worth solving, a prioritized bet, and a spec someone could build from.",
-    links: [{ label: "See every document", href: "/work/bereal" }],
+    links: [{ label: "See the work", href: "/work/bereal" }],
     accent: "#43e2ff",
     accent2: "#8f7dff",
     preview: "nudge",
@@ -314,32 +314,18 @@ export const projects: Project[] = [
   {
     slug: "ai-resume-tracker",
     title: "AI Resume Tracker",
-    tagline: "See how well your resume fits a specific job",
+    tagline: "Instant AI feedback on your resume",
     categories: ["ai"],
     tags: ["AI", "Development"],
     status: "Live",
     statusTone: "live",
-    timeframe: "Dec 2025, team of 3",
-    role: "Co-builder, with 2 classmates",
-    problem:
-      "Job descriptions are dense and full of hidden expectations, tailoring a resume to every posting takes hours, and recruiter feedback is usually too vague to act on.",
+    role: "[ADD: your role]",
     summary:
-      "Paste in a job description and upload your resume. It compares the skills, keywords, and responsibilities in both, then returns a 0 to 100 compatibility score with short, specific tips. We built it as a mutual aid tool students can share with each other.",
-    features: [
-      "Compares skills, keywords, and responsibilities between a resume and a specific job posting",
-      "Returns a 0 to 100 compatibility score with short written tips",
-      "Next on the roadmap: a live score that updates as you edit, a keyword heatmap, and a what-if mode that previews how adding a skill changes the score",
-    ],
+      "Upload a resume and get feedback on its quality and clarity, with specific, actionable suggestions to strengthen it.",
     tech: ["React", "JavaScript", "HTML/CSS", "LLM integration"],
-    ai: "An LLM compares the resume against the posting and returns a score with targeted tips instead of generic advice.",
-    whyItMatters: "Built for students and job seekers trying to stand out, and easy to share so friends can help each other.",
-    links: [
-      { label: "Try it live", href: "https://puter.com/app/rkn-ai-resume-tracker" },
-      {
-        label: "View the deck",
-        href: "https://docs.google.com/presentation/d/1mDDbo3J2NXRruQrdjnwq50TkzmkbTxKbFgu5gG56R1I/edit?usp=sharing",
-      },
-    ],
+    ai: "An LLM reviews the resume and returns targeted suggestions instead of generic advice.",
+    whyItMatters: "Built for students and job seekers trying to stand out.",
+    links: [{ label: "Try it live", href: "https://puter.com/app/rkn-ai-resume-tracker" }],
     accent: "#2fd9a9",
     accent2: "#43e2ff",
     preview: "resume",
