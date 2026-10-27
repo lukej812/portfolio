@@ -8,6 +8,7 @@ import { Projects } from "@/components/sections/Projects";
 import { Skills } from "@/components/sections/Skills";
 import { Statement } from "@/components/sections/Statement";
 import { Testimonials } from "@/components/sections/Testimonials";
+import { Work } from "@/components/sections/Work";
 import { Workflow } from "@/components/sections/Workflow";
 import { statements } from "@/content/site";
 
@@ -25,6 +26,7 @@ export default function Home() {
       <Workflow />
       <Statement text={statements.beforeProjects} />
       <Projects />
+      <Work />
       <Experience />
       <GitHubSection />
       <Testimonials />

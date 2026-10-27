@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
-import { Briefcase, FlaskConical, GraduationCap, HandHeart, Users } from "lucide-react";
+import { ArrowRight, Briefcase, FlaskConical, GraduationCap, HandHeart, Users } from "lucide-react";
+import Link from "next/link";
 import { useRef } from "react";
 
 import { CountUp } from "@/components/ui/CountUp";
@@ -9,6 +10,7 @@ import { Text } from "@/components/ui/Placeholder";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { education, experience, type ExperienceItem } from "@/content/experience";
+import { documentCount, getCaseStudy } from "@/content/work";
 import { cn } from "@/lib/cn";
 import { ease } from "@/lib/motion";
 import { cleanMixed, shouldShow, visible } from "@/lib/placeholder";
@@ -81,6 +83,7 @@ function TimelineRow({ item, side }: { item: ExperienceItem; side: "left" | "rig
   const Icon = kind.icon;
   const dates = cleanMixed(item.dates);
   const bullets = visible(item.bullets);
+  const study = item.caseStudy ? getCaseStudy(item.caseStudy) : undefined;
 
   return (
     <li className="relative grid pb-12 pl-10 last:pb-0 lg:grid-cols-2 lg:gap-16 lg:pl-0">
@@ -173,6 +176,18 @@ function TimelineRow({ item, side }: { item: ExperienceItem; side: "left" | "rig
               </div>
             ))}
           </dl>
+        )}
+
+        {study && (
+          <Link
+            href={`/work/${study.slug}`}
+            className="group mt-6 flex items-center justify-between gap-4 rounded-2xl border border-line-strong bg-white/[0.02] px-4 py-3 text-sm transition-colors duration-300 hover:border-signal/40"
+          >
+            <span className="text-fg">
+              See the work <span className="text-fg-subtle">· {documentCount(study)} documents</span>
+            </span>
+            <ArrowRight aria-hidden className="size-4 shrink-0 text-fg-muted transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-fg" />
+          </Link>
         )}
       </motion.article>
     </li>

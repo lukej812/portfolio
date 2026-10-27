@@ -398,6 +398,46 @@ function renderArt(kind: PreviewKind, a: string, b: string, id: IdFn) {
         </g>
       );
 
+    case "nudge":
+      return (
+        <g>
+          {/* sender phone */}
+          <g className="pv-drift">
+            <rect x="40" y="26" width="78" height="150" rx="14" fill="#0b1017" stroke={a} strokeOpacity=".45" />
+            <rect x="68" y="32" width="22" height="4" rx="2" fill="#a3bee1" fillOpacity=".25" />
+            <circle cx="79" cy="72" r="16" fill={b} fillOpacity=".2" stroke={b} strokeOpacity=".7" />
+            <Bar x={66} y={68} w={26} h={8} o={0.75} fill={b} />
+            <Bar x={56} y={98} w={46} o={0.4} />
+            <Bar x={62} y={108} w={34} o={0.16} />
+            <rect x="52" y="128" width="54" height="20" rx="10" fill={a} fillOpacity=".9" />
+            <Bar x={64} y={136} w={30} o={0.85} fill="#05070b" />
+          </g>
+          {/* the nudge */}
+          <path d="M122 110c28-46 52-46 76-20" fill="none" stroke={`url(#${id("ab")})`} strokeWidth="2" strokeDasharray="3 4" className="pv-flow" />
+          <path d="M193 84l6 7-9 1" stroke={b} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          {/* receiver phone */}
+          <rect x="202" y="26" width="78" height="150" rx="14" fill="#0b1017" stroke={b} strokeOpacity=".45" />
+          <rect x="230" y="32" width="22" height="4" rx="2" fill="#a3bee1" fillOpacity=".25" />
+          <g className="pv-rise">
+            <rect x="210" y="50" width="62" height="40" rx="9" fill={a} fillOpacity=".14" stroke={a} strokeOpacity=".6" />
+            <circle cx="222" cy="62" r="5" fill={b} fillOpacity=".85" />
+            <Bar x={231} y={59} w={34} o={0.7} />
+            <Bar x={218} y={74} w={46} o={0.2} />
+            <rect x="218" y="81" width="46" height="3" rx="1.5" fill="#a3bee1" fillOpacity=".15" />
+            <rect x="218" y="81" width="30" height="3" rx="1.5" fill={a} className="pv-blink" />
+          </g>
+          <rect x="214" y="104" width="54" height="40" rx="8" fill="#a3bee1" fillOpacity=".06" stroke="#a3bee1" strokeOpacity=".15" />
+          <rect x="250" y="108" width="14" height="14" rx="4" fill={b} fillOpacity=".35" />
+          <rect x="214" y="152" width="54" height="14" rx="7" fill={b} fillOpacity=".2" stroke={b} strokeOpacity=".5" />
+          {/* RICE badge */}
+          <g className="pv-pop">
+            <rect x="128" y="146" width="66" height="22" rx="11" fill={a} fillOpacity=".12" stroke={a} strokeOpacity=".55" />
+            <circle cx="140" cy="157" r="3.5" fill={a} />
+            <Bar x={149} y={155} w={36} o={0.6} />
+          </g>
+        </g>
+      );
+
     case "broke":
       return (
         <g>

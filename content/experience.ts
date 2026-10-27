@@ -1,6 +1,7 @@
 /**
  * Experience timeline, newest first. `metrics` render as animated count-ups,
- * so only put real, sourced numbers there.
+ * so only put real, sourced numbers there. `caseStudy` is the slug of a
+ * /work page (see content/work.ts) and adds a "See the work" link.
  */
 
 export type Metric = { value: number; prefix?: string; suffix?: string; label: string };
@@ -13,6 +14,7 @@ export type ExperienceItem = {
   summary?: string;
   bullets: string[];
   metrics?: Metric[];
+  caseStudy?: string;
 };
 
 export const education = {
@@ -30,19 +32,31 @@ export const education = {
 
 export const experience: ExperienceItem[] = [
   {
+    role: "AI Product Manager Intern",
+    org: "Sparrow",
+    dates: "Starting Nov 2026",
+    kind: "work",
+    bullets: [
+      "Joining the team as an AI Product Manager Intern in November 2026.",
+      "[ADD: what you're working on once you start]",
+    ],
+  },
+  {
     role: "Program Management Intern",
     org: "Americans4Equality (A4E)",
-    dates: "Aug 2026 to present",
+    dates: "Aug 2026 to Nov 2026",
     kind: "work",
     summary:
-      "A nonprofit that helps people explore AI and technology education to advance their careers or move into new paths.",
+      "A nonprofit that helps people explore AI and technology education to advance their careers or move into new paths. The internship wraps up November 1, 2026, and I'm staying on as a volunteer.",
     bullets: [
       "Rebuilt the nonprofit's website from zero to production as PM and lead developer, using React 19, TypeScript, Vite, and Cloudflare Pages with GitHub Actions CI/CD.",
       "Designed a centralized TypeScript content system so non-technical staff can update all site copy without touching component code.",
       "Developed a multi-platform social media strategy across Instagram, TikTok, YouTube, and LinkedIn, and introduced Claude-powered content workflows to speed up production.",
       "Built a JotForm student intake and screening system to evaluate program eligibility at scale, and managed all workstreams in Monday.com and Office 365.",
       "Created launch content for the A4E AI Portal on LinkedIn, Meta, and X.",
+      "Wrote the market research and competitive analysis behind the AI Portal (5 learner personas, 12 competitors, MoSCoW scope, and a phased roadmap) and built the pitch deck for leadership.",
     ],
+    caseStudy: "americans4equality",
   },
   {
     role: "AI Fluency Guide for Intern Groups",
@@ -64,12 +78,14 @@ export const experience: ExperienceItem[] = [
     bullets: [
       "Identified the highest-priority MAU growth feature out of 6 candidates (\"Buddy Nudge\", RICE score 12.8) by mapping a 5-stage user journey from awareness through retention.",
       "Analyzed 4 core retention mechanisms and benchmarked BeReal against TikTok, Instagram, and Snapchat on DAU/MAU and feature differentiation.",
-      "Wrote a PM problem statement identifying forced video adoption as the main friction against BeReal's authenticity-first value proposition, validated the feature with structured focus group testing, and delivered a stakeholder pitch with business rationale and an implementation roadmap.",
+      "Wrote a PM problem statement identifying forced video adoption as the main friction against BeReal's authenticity-first value proposition.",
+      "Took Buddy Nudge from PRD-lite to flow map and prototype screens, designed a 7-person focus group test (plan, discussion guide, and survey), and built a 7-slide stakeholder pitch with an evidence pack.",
     ],
     metrics: [
       { value: 6, label: "feature candidates scored with RICE" },
       { value: 3, label: "competitors benchmarked" },
     ],
+    caseStudy: "bereal",
   },
   {
     role: "Amazon Operational Strategy & People Analytics Externship",
