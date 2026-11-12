@@ -34,20 +34,32 @@ export const experience: ExperienceItem[] = [
   {
     role: "AI Product Manager Intern",
     org: "Sparrow",
-    dates: "Starting Nov 2026",
+    dates: "Nov 2026 to Present",
+    kind: "work",
+    summary: "A New York-based company. I work with the team remotely.",
+    bullets: [
+      "Joined the product team to help launch Sparrow AI, a new AI coaching app.",
+      "[ADD: what you've worked on or shipped for Sparrow AI so far]",
+    ],
+  },
+  {
+    role: "AI Fluency Lead",
+    org: "Americans4Equality (A4E)",
+    dates: "Oct 2026 to Present",
     kind: "work",
     bullets: [
-      "Joining the team as an AI Product Manager Intern in November 2026.",
-      "[ADD: what you're working on once you start]",
+      "Partner with A4E leadership in meetings with city, state, and industry leaders, including Senator Patty Murray's office, the Mayor of Kent, the Port of Seattle, and Alaska Airlines, to shape new AI and flight simulation programs for youth and adult learners.",
+      "Lead the intern team to full AI fluency, with every intern earning 3 to 5 Anthropic Claude certifications in their own field.",
+      "Teach Anthropic's AI Fluency: Framework & Foundations course and coach each intern on applying Claude to their role.",
     ],
   },
   {
     role: "Program Management Intern",
     org: "Americans4Equality (A4E)",
-    dates: "Aug 2026 to Nov 2026",
+    dates: "Aug 2026 to Oct 2026",
     kind: "work",
     summary:
-      "A nonprofit that helps people explore AI and technology education to advance their careers or move into new paths. The internship wraps up November 1, 2026, and I'm staying on as a volunteer.",
+      "A nonprofit that helps people explore AI and technology education to advance their careers or move into new paths. After the internship I stayed on as AI Fluency Lead.",
     bullets: [
       "Rebuilt the nonprofit's website from zero to production as PM and lead developer, using React 19, TypeScript, Vite, and Cloudflare Pages with GitHub Actions CI/CD.",
       "Designed a centralized TypeScript content system so non-technical staff can update all site copy without touching component code.",
@@ -57,16 +69,6 @@ export const experience: ExperienceItem[] = [
       "Wrote the market research and competitive analysis behind the AI Portal (5 learner personas, 12 competitors, MoSCoW scope, and a phased roadmap) and built the pitch deck for leadership.",
     ],
     caseStudy: "americans4equality",
-  },
-  {
-    role: "AI Fluency Guide for Intern Groups",
-    org: "Americans4Equality (A4E)",
-    dates: "[ADD: dates]",
-    kind: "work",
-    bullets: [
-      "Teach and guide interns through AI fluency concepts and certifications, including Anthropic's AI Fluency: Framework & Foundations course.",
-      "[ADD: number of interns or sessions]",
-    ],
   },
   {
     role: "BeReal Product Management Externship",
