@@ -1,7 +1,8 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, X } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 
 import { PlaceholderChip, Text } from "@/components/ui/Placeholder";
@@ -192,30 +193,36 @@ function Links({ project }: { project: Project }) {
   if (links.length === 0) return null;
   return (
     <div className="mt-7 flex flex-wrap items-center gap-3">
-      {links.map((l, i) =>
-        isPlaceholder(l.href) ? (
-          <span key={l.label} className="inline-flex items-center gap-2 text-sm text-fg-subtle">
-            {l.label}: <PlaceholderChip>{l.href}</PlaceholderChip>
-          </span>
-        ) : (
-          <a
-            key={l.label}
-            href={l.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={
-              i === 0
-                ? "group inline-flex h-11 items-center gap-2 rounded-full px-5 text-sm font-medium text-ink-950 transition-[filter,box-shadow] duration-300 hover:brightness-110"
-                : "group inline-flex h-11 items-center gap-2 rounded-full border border-line-strong px-5 text-sm text-fg transition-colors duration-300 hover:border-signal/40"
-            }
-            style={i === 0 ? { background: project.accent, boxShadow: `0 10px 40px -12px ${project.accent}` } : undefined}
-          >
+      {links.map((l, i) => {
+        if (isPlaceholder(l.href)) {
+          return (
+            <span key={l.label} className="inline-flex items-center gap-2 text-sm text-fg-subtle">
+              {l.label}: <PlaceholderChip>{l.href}</PlaceholderChip>
+            </span>
+          );
+        }
+        const className =
+          i === 0
+            ? "group inline-flex h-11 items-center gap-2 rounded-full px-5 text-sm font-medium text-ink-950 transition-[filter,box-shadow] duration-300 hover:brightness-110"
+            : "group inline-flex h-11 items-center gap-2 rounded-full border border-line-strong px-5 text-sm text-fg transition-colors duration-300 hover:border-signal/40";
+        const style = i === 0 ? { background: project.accent, boxShadow: `0 10px 40px -12px ${project.accent}` } : undefined;
+        // Pages on this site (like /work/bereal) open in place; everything else in a new tab
+        if (l.href.startsWith("/")) {
+          return (
+            <Link key={l.label} href={l.href} className={className} style={style}>
+              {l.label}
+              <ArrowRight aria-hidden className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+            </Link>
+          );
+        }
+        return (
+          <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" className={className} style={style}>
             {l.label}
             <ArrowUpRight aria-hidden className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             <span className="sr-only"> (opens in a new tab)</span>
           </a>
-        ),
-      )}
+        );
+      })}
     </div>
   );
 }

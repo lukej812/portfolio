@@ -33,7 +33,7 @@ export function Footer() {
             <span className="sr-only">GitHub (opens in a new tab)</span>
           </a>
           <a
-            href="#home"
+            href="#main"
             className="group ml-2 flex h-10 items-center gap-2 rounded-full border border-line px-4 text-sm text-fg-muted transition-colors hover:border-signal/40 hover:text-fg"
           >
             Back to top

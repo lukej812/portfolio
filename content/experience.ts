@@ -1,6 +1,7 @@
 /**
  * Experience timeline, newest first. `metrics` render as animated count-ups,
- * so only put real, sourced numbers there.
+ * so only put real, sourced numbers there. `caseStudy` is the slug of a
+ * /work page (see content/work.ts) and adds a "See the work" link.
  */
 
 export type Metric = { value: number; prefix?: string; suffix?: string; label: string };
@@ -13,6 +14,7 @@ export type ExperienceItem = {
   summary?: string;
   bullets: string[];
   metrics?: Metric[];
+  caseStudy?: string;
 };
 
 export const education = {
@@ -30,29 +32,43 @@ export const education = {
 
 export const experience: ExperienceItem[] = [
   {
+    role: "AI Product Manager Intern",
+    org: "Sparrow",
+    dates: "Nov 2026 to Present",
+    kind: "work",
+    summary: "A New York-based company. I work with the team remotely.",
+    bullets: [
+      "Joined the product team to help launch Sparrow AI, a new AI coaching app.",
+      "[ADD: what you've worked on or shipped for Sparrow AI so far]",
+    ],
+  },
+  {
+    role: "AI Fluency Lead",
+    org: "Americans4Equality (A4E)",
+    dates: "Oct 2026 to Present",
+    kind: "work",
+    bullets: [
+      "Partner with A4E leadership in meetings with city, state, and industry leaders, including Senator Patty Murray's office, the Mayor of Kent, the Port of Seattle, and Alaska Airlines, to shape new AI and flight simulation programs for youth and adult learners.",
+      "Lead the intern team to full AI fluency, with every intern earning 3 to 5 Anthropic Claude certifications in their own field.",
+      "Teach Anthropic's AI Fluency: Framework & Foundations course and coach each intern on applying Claude to their role.",
+    ],
+  },
+  {
     role: "Program Management Intern",
     org: "Americans4Equality (A4E)",
-    dates: "Aug 2026 to present",
+    dates: "Aug 2026 to Oct 2026",
     kind: "work",
     summary:
-      "A nonprofit that helps people explore AI and technology education to advance their careers or move into new paths.",
+      "A nonprofit that helps people explore AI and technology education to advance their careers or move into new paths. After the internship I stayed on as AI Fluency Lead.",
     bullets: [
       "Rebuilt the nonprofit's website from zero to production as PM and lead developer, using React 19, TypeScript, Vite, and Cloudflare Pages with GitHub Actions CI/CD.",
       "Designed a centralized TypeScript content system so non-technical staff can update all site copy without touching component code.",
       "Developed a multi-platform social media strategy across Instagram, TikTok, YouTube, and LinkedIn, and introduced Claude-powered content workflows to speed up production.",
       "Built a JotForm student intake and screening system to evaluate program eligibility at scale, and managed all workstreams in Monday.com and Office 365.",
       "Created launch content for the A4E AI Portal on LinkedIn, Meta, and X.",
+      "Wrote the market research and competitive analysis behind the AI Portal (5 learner personas, 12 competitors, MoSCoW scope, and a phased roadmap) and built the pitch deck for leadership.",
     ],
-  },
-  {
-    role: "AI Fluency Guide for Intern Groups",
-    org: "Americans4Equality (A4E)",
-    dates: "[ADD: dates]",
-    kind: "work",
-    bullets: [
-      "Teach and guide interns through AI fluency concepts and certifications, including Anthropic's AI Fluency: Framework & Foundations course.",
-      "[ADD: number of interns or sessions]",
-    ],
+    caseStudy: "americans4equality",
   },
   {
     role: "BeReal Product Management Externship",
@@ -64,12 +80,14 @@ export const experience: ExperienceItem[] = [
     bullets: [
       "Identified the highest-priority MAU growth feature out of 6 candidates (\"Buddy Nudge\", RICE score 12.8) by mapping a 5-stage user journey from awareness through retention.",
       "Analyzed 4 core retention mechanisms and benchmarked BeReal against TikTok, Instagram, and Snapchat on DAU/MAU and feature differentiation.",
-      "Wrote a PM problem statement identifying forced video adoption as the main friction against BeReal's authenticity-first value proposition, validated the feature with structured focus group testing, and delivered a stakeholder pitch with business rationale and an implementation roadmap.",
+      "Wrote a PM problem statement identifying forced video adoption as the main friction against BeReal's authenticity-first value proposition.",
+      "Took Buddy Nudge from PRD-lite to flow map and prototype screens, designed a 7-person focus group test (plan, discussion guide, and survey), and built a 7-slide stakeholder pitch with an evidence pack.",
     ],
     metrics: [
       { value: 6, label: "feature candidates scored with RICE" },
       { value: 3, label: "competitors benchmarked" },
     ],
+    caseStudy: "bereal",
   },
   {
     role: "Amazon Operational Strategy & People Analytics Externship",

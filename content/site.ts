@@ -46,6 +46,7 @@ export const nav = [
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
+  { id: "work", label: "Work" },
   { id: "experience", label: "Experience" },
   { id: "github", label: "GitHub" },
   { id: "contact", label: "Contact" },
@@ -57,7 +58,7 @@ export const hero = {
   subheadline:
     "I build with AI, think in products, and care about making technology useful and accessible for people who aren't tech-savvy.",
   status: [
-    { label: "Now", value: "Program Management Intern at Americans4Equality" },
+    { label: "Now", value: "AI Product Manager Intern at Sparrow" },
     { label: "Open to", value: "Product, data, business tech, and AI roles" },
   ],
 };
@@ -85,7 +86,7 @@ export const about = {
   title: "Building where AI, product, and people meet.",
   paragraphs: [
     "I'm Luke. I recently graduated from the University of Washington Information School with a B.S. in Informatics. My work sits where AI, product management, data, and business technology overlap.",
-    "Right now I'm a Program Management Intern at Americans4Equality (A4E), a nonprofit that helps people explore AI and technology education so they can grow in their careers or move into new ones. I support program operations, content creation, outreach, and AI education, and I guide intern groups through AI fluency concepts and certifications, including Anthropic's AI Fluency: Framework & Foundations course.",
+    "I'm an AI Product Manager Intern at Sparrow, where I joined the product team to help launch Sparrow AI, a new AI coaching app. Before that I was a Program Management Intern at Americans4Equality (A4E), a nonprofit that helps people explore AI and technology education so they can grow in their careers or move into new ones. I supported program operations, content creation, outreach, and AI education. I've stayed on at A4E as AI Fluency Lead, where I guide interns through AI fluency and Claude certifications, including Anthropic's AI Fluency: Framework & Foundations course.",
     "Outside of work, I use Claude Code to prototype products and solve practical problems. Wavelength is a social app for incoming college freshmen. BrokeTogether helps groups split shared costs. I like taking an idea from a rough concept to something people can actually use, then improving it based on what they need.",
   ],
   goal: {

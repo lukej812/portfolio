@@ -2,7 +2,9 @@
 
 import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState, type ComponentProps } from "react";
 
 import { GitHubIcon, Monogram } from "@/components/ui/Icons";
 import { nav, site } from "@/content/site";
@@ -17,10 +19,11 @@ type SectionId = (typeof nav)[number]["id"];
  * top-level block in <main> is observed; blocks that aren't in the nav (the
  * workflow, statements, testimonials) count as the nav section before them.
  */
-function useActiveSection(): SectionId {
+function useActiveSection(pathname: string): SectionId {
   const [active, setActive] = useState<SectionId>("home");
 
   useEffect(() => {
+    if (pathname !== "/") return;
     const main = document.getElementById("main");
     if (!main) return;
     const ids = new Set<string>(nav.map((n) => n.id));
@@ -42,13 +45,22 @@ function useActiveSection(): SectionId {
     );
     owner.forEach((_, el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
+  // Case study pages belong to the Work section
+  if (pathname.startsWith("/work/")) return "work";
   return active;
 }
 
+/** Same-page anchor on the home page; a link back to that section from anywhere else */
+function SectionLink({ id, onHome, ...rest }: { id: string; onHome: boolean } & Omit<ComponentProps<"a">, "href">) {
+  return onHome ? <a href={`#${id}`} {...rest} /> : <Link href={`/#${id}`} {...rest} />;
+}
+
 export function Navbar() {
-  const active = useActiveSection();
+  const pathname = usePathname();
+  const onHome = pathname === "/";
+  const active = useActiveSection(pathname);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
@@ -105,18 +117,24 @@ export function Navbar() {
               : "border border-transparent",
           )}
         >
-          <a href="#home" className="group flex items-center gap-2.5 rounded-full pr-2" aria-label={`${site.name}, back to top`}>
+          <SectionLink
+            id="home"
+            onHome={onHome}
+            className="group flex items-center gap-2.5 rounded-full pr-2"
+            aria-label={onHome ? `${site.name}, back to top` : `${site.name}, home`}
+          >
             <Monogram className="size-8 transition-transform duration-500 ease-out-expo group-hover:rotate-[-8deg]" />
             <span className="font-display text-[0.95rem] font-semibold tracking-tight">{site.name}</span>
-          </a>
+          </SectionLink>
 
           <ul className="hidden items-center gap-1 lg:flex">
             {nav.map((item) => {
               const isActive = active === item.id;
               return (
                 <li key={item.id}>
-                  <a
-                    href={`#${item.id}`}
+                  <SectionLink
+                    id={item.id}
+                    onHome={onHome}
                     aria-current={isActive ? "true" : undefined}
                     className={cn(
                       "relative block rounded-full px-3.5 py-2 text-sm transition-colors duration-300",
@@ -131,7 +149,7 @@ export function Navbar() {
                       />
                     )}
                     <span className="relative">{item.label}</span>
-                  </a>
+                  </SectionLink>
                 </li>
               );
             })}
@@ -186,9 +204,10 @@ export function Navbar() {
                   variants={{ hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0 } }}
                   transition={{ duration: 0.6, ease: ease.outExpo }}
                 >
-                  <a
+                  <SectionLink
                     ref={i === 0 ? firstLink : undefined}
-                    href={`#${item.id}`}
+                    id={item.id}
+                    onHome={onHome}
                     onClick={() => setOpen(false)}
                     className={cn(
                       "flex items-baseline gap-4 py-2 font-display text-4xl font-semibold tracking-tight transition-colors",
@@ -197,7 +216,7 @@ export function Navbar() {
                   >
                     <span className="label text-signal/70">0{i + 1}</span>
                     {item.label}
-                  </a>
+                  </SectionLink>
                 </motion.li>
               ))}
             </motion.ul>
